@@ -19,9 +19,18 @@
           <span id="calendar-title"></span>
           <button id="next-month">بعدی</button>
         </div>
-        <div class="calendar-body"></div>
-        
+        <div class="calendar-body" id="current-calendar"></div>
       </div>
+      <div id="next-calendar" class="calendar" style="display: none">
+        <div class="calendar-header">
+          <span id="next-calendar-title"></span>
+        </div>
+        <div class="calendar-body"></div>
+      </div>
+      <select id="month-select">
+        <option value="current">نمایش ماه فعلی</option>
+        <option value="next">نمایش ماه فعلی و ماه آینده</option>
+      </select>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/jalaali-js@1.2.7/dist/jalaali.min.js"></script>
     <script src="js/script.js"></script>
