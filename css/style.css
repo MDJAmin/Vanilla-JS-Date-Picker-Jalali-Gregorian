@@ -21,12 +21,11 @@ body {
 .calendar-container {
   display: none;
   position: absolute;
-  left: 40%;
+  left: 35%;
   background-color: white;
   border: 1px solid #ddd;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  border-radius: 10px;
 }
 
 .calendar {
@@ -35,7 +34,7 @@ body {
 }
 
 .calendar-header {
-  border-radius: 10px;
+  min-height: 40px;
   background-color: #f0f0f0;
   padding: 10px;
   display: flex;
@@ -57,6 +56,13 @@ body {
 #next-month:hover {
   background-color: #000000;
   color: white;
+}
+
+#prev-month:focus,
+#next-month:focus {
+  background-color: #000000;
+  color: white;
+  scale: 1.1;
 }
 
 .calendar-body {
@@ -81,4 +87,15 @@ body {
 
 .calendar-body .day {
   border: 1px solid #ddd;
+}
+
+#month-select {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  padding: 10px 0px;
+}
+
+select option{
+  font-size: 1.2em;
 }
