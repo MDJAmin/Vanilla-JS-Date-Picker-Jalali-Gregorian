@@ -1,5 +1,6 @@
 body {
   font-family: Arial, sans-serif;
+  font-weight: bolder;
   direction: rtl;
   background-color: black;
 }
@@ -7,20 +8,25 @@ body {
 #datepicker {
   width: 200px;
   padding: 10px;
-  margin: 20px;
+  margin: 20px auto;
   text-align: center;
+  display: flex;
   cursor: pointer;
+  transition: all 0.5s;
 }
 
+#datepicker:focus {
+  scale: 1.1;
+}
 .calendar-container {
   display: none;
   position: absolute;
-  top: 60px;
-  left: 20px;
+  left: 40%;
   background-color: white;
   border: 1px solid #ddd;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  border-radius: 10px;
 }
 
 .calendar {
@@ -29,6 +35,7 @@ body {
 }
 
 .calendar-header {
+  border-radius: 10px;
   background-color: #f0f0f0;
   padding: 10px;
   display: flex;
@@ -36,15 +43,20 @@ body {
   justify-content: space-between;
 }
 
-#prev-month, #next-month {
+#prev-month,
+#next-month {
   background-color: #ddd;
   border: none;
-  padding: 5px 10px;
+  padding: 10px 30px;
   cursor: pointer;
+  transition: all 0.5s;
+  border-radius: 7px;
 }
 
-#prev-month:hover, #next-month:hover {
-  background-color: #ccc;
+#prev-month:hover,
+#next-month:hover {
+  background-color: #000000;
+  color: white;
 }
 
 .calendar-body {
@@ -53,15 +65,18 @@ body {
 
 .calendar-body div {
   display: inline-block;
-  width: 60px;
+  width: 62.1px;
   height: 40px;
   line-height: 40px;
   margin: 2px;
   cursor: pointer;
+  transition: all 0.2s;
 }
 
 .calendar-body div:hover {
-  background-color: #e0e0e0;
+  background-color: #000000;
+  color: white;
+  scale: 1.09;
 }
 
 .calendar-body .day {
