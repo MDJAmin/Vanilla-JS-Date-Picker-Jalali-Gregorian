@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8" />
+    <title>تقویم شمسی</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <input
+      type="text"
+      id="datepicker"
+      placeholder="تاریخ را انتخاب کنید"
+      readonly
+    />
+    <div id="calendar-container" class="calendar-container">
+      <div id="calendar" class="calendar">
+        <div class="calendar-header">
+          <button id="prev-month">قبلی</button>
+          <span id="calendar-title"></span>
+          <button id="next-month">بعدی</button>
+        </div>
+        <div class="calendar-body"></div>
+        
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jalaali-js@1.2.7/dist/jalaali.min.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
