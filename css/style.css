@@ -1,0 +1,69 @@
+body {
+  font-family: Arial, sans-serif;
+  direction: rtl;
+  background-color: black;
+}
+
+#datepicker {
+  width: 200px;
+  padding: 10px;
+  margin: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.calendar-container {
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  background-color: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.calendar {
+  width: 500px;
+  text-align: center;
+}
+
+.calendar-header {
+  background-color: #f0f0f0;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#prev-month, #next-month {
+  background-color: #ddd;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+#prev-month:hover, #next-month:hover {
+  background-color: #ccc;
+}
+
+.calendar-body {
+  padding: 10px;
+}
+
+.calendar-body div {
+  display: inline-block;
+  width: 60px;
+  height: 40px;
+  line-height: 40px;
+  margin: 2px;
+  cursor: pointer;
+}
+
+.calendar-body div:hover {
+  background-color: #e0e0e0;
+}
+
+.calendar-body .day {
+  border: 1px solid #ddd;
+}
