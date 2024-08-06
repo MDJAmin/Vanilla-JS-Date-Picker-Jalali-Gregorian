@@ -12,7 +12,9 @@
       placeholder="تاریخ را انتخاب کنید"
       readonly
     />
-    <div id="calendar-container" class="calendar-container">
+    <div id="calendar-container" class="calendar-container" data-type="jalaali">
+        <button class="toggle-calendar-btn" id="toggle-calendar">تغییر تقویم</button>
+
       <div id="calendar" class="calendar">
         <div class="calendar-header">
           <button id="prev-month">قبلی</button>
@@ -23,14 +25,14 @@
       </div>
       <div id="next-calendar" class="calendar" style="display: none">
         <div class="calendar-header">
-          <span id="next-calendar-title"></span>
+          <span id="next-calendar-title"></span>  
         </div>
-        <div class="calendar-body"></div>
+         <div class="calendar-body"></div>
       </div>
       <select id="month-select">
         <option value="current">نمایش ماه فعلی</option>
         <option value="next">نمایش ماه فعلی و ماه آینده</option>
-      </select>
+      </select> 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/jalaali-js@1.2.7/dist/jalaali.min.js"></script>
     <script src="js/script.js"></script>
