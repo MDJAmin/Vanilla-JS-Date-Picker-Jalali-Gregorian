@@ -5,7 +5,7 @@ body {
   background-color: black;
 }
 
-#datepicker {
+.datepicker {
   width: 200px;
   padding: 10px;
   margin: 20px auto;
@@ -16,7 +16,7 @@ body {
   border-radius: 10px;
 }
 
-#datepicker:focus {
+.datepicker:focus {
   scale: 1.1;
 }
 
