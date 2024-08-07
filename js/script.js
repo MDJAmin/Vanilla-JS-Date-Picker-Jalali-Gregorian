@@ -1,6 +1,37 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const datepicker = document.getElementById("datepicker");
-  const calendarContainer = document.getElementById("calendar-container");
+  const datepicker = document.querySelector(".datepicker");
+
+  // Create and add calendar container
+  const calendarContainer = document.createElement("div");
+  calendarContainer.id = "calendar-container";
+  calendarContainer.className = "calendar-container";
+  document.body.appendChild(calendarContainer);
+
+  // Calendar content
+  calendarContainer.innerHTML = `
+        <div id="calendars">
+            <div id="calendar" class="calendar">
+                <div class="calendar-header">
+                    <button id="prev-month">قبلی</button>
+                    <span id="calendar-title"></span>
+                    <button id="next-month">بعدی</button>
+                </div>
+                <div class="calendar-body" id="current-calendar"></div>
+            </div>
+            <div id="next-calendar" class="calendar" style="display: none">
+                <div class="calendar-header">
+                    <span id="next-calendar-title"></span>
+                </div>
+                <div class="calendar-body"></div>
+            </div>
+        </div>
+        <select id="month-select">
+            <option value="current">نمایش ماه فعلی</option>
+            <option value="next">نمایش ماه فعلی و ماه آینده</option>
+        </select>
+        <button id="change-calender-date">تغییر زبان</button>
+    `;
+
   const calendar = document.getElementById("calendar");
   const calendarTitle = document.getElementById("calendar-title");
   const prevMonthButton = document.getElementById("prev-month");
@@ -109,18 +140,18 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       calendar.querySelector(".calendar-body").innerHTML = `
-      ${daysOfWeek.map((day) => `<div>${day}</div>`).join("")}
-      ${Array.from({ length: jalaaliMonthDays }, (_, i) => {
-        const dayNumber = i + 1;
-        const isToday =
-          jalaaliDate.jy === todayJalaali.jy &&
-          jalaaliDate.jm === todayJalaali.jm &&
-          dayNumber === todayJalaali.jd;
-        return `<div class="day${
-          isToday ? " current-day" : ""
-        }">${dayNumber}</div>`;
-      }).join("")}
-    `;
+                ${daysOfWeek.map((day) => `<div>${day}</div>`).join("")}
+                ${Array.from({ length: jalaaliMonthDays }, (_, i) => {
+                  const dayNumber = i + 1;
+                  const isToday =
+                    jalaaliDate.jy === todayJalaali.jy &&
+                    jalaaliDate.jm === todayJalaali.jm &&
+                    dayNumber === todayJalaali.jd;
+                  return `<div class="day${
+                    isToday ? " current-day" : ""
+                  }">${dayNumber}</div>`;
+                }).join("")}
+            `;
 
       document.querySelectorAll(".day").forEach((dayElement) => {
         dayElement.addEventListener("click", function () {
@@ -173,18 +204,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         nextCalendar.querySelector(".calendar-body").innerHTML = `
-        ${daysOfWeek.map((day) => `<div>${day}</div>`).join("")}
-        ${Array.from({ length: nextJalaaliMonthDays }, (_, i) => {
-          const dayNumber = i + 1;
-          const isToday =
-            nextJalaaliDate.jy === todayJalaali.jy &&
-            nextJalaaliDate.jm === todayJalaali.jm &&
-            dayNumber === todayJalaali.jd;
-          return `<div class="day${
-            isToday ? " current-day" : ""
-          }">${dayNumber}</div>`;
-        }).join("")}
-      `;
+                    ${daysOfWeek.map((day) => `<div>${day}</div>`).join("")}
+                    ${Array.from({ length: nextJalaaliMonthDays }, (_, i) => {
+                      const dayNumber = i + 1;
+                      const isToday =
+                        nextJalaaliDate.jy === todayJalaali.jy &&
+                        nextJalaaliDate.jm === todayJalaali.jm &&
+                        dayNumber === todayJalaali.jd;
+                      return `<div class="day${
+                        isToday ? " current-day" : ""
+                      }">${dayNumber}</div>`;
+                    }).join("")}
+                `;
 
         nextCalendar.style.display = "block";
       } else {
@@ -203,20 +234,23 @@ document.addEventListener("DOMContentLoaded", function () {
       text[currentLanguage].showCurrentAndNextMonth;
   }
 
+  // Show/hide calendar
   datepicker.addEventListener("click", function () {
-    calendarContainer.style.display = "block";
+    calendarContainer.style.display =
+      calendarContainer.style.display === "none" ? "block" : "none";
     updateCalendar();
   });
 
   document.addEventListener("click", function (event) {
     if (
       !calendarContainer.contains(event.target) &&
-      event.target !== datepicker
+      !datepicker.contains(event.target)
     ) {
       calendarContainer.style.display = "none";
     }
   });
 
+  // Navigation buttons
   prevMonthButton.addEventListener("click", function () {
     currentDate.setMonth(currentDate.getMonth() - 1);
     updateCalendar();
@@ -227,9 +261,7 @@ document.addEventListener("DOMContentLoaded", function () {
     updateCalendar();
   });
 
-  monthSelect.addEventListener("change", function () {
-    updateCalendar();
-  });
+  monthSelect.addEventListener("change", updateCalendar);
 
   changeCalenderDate.addEventListener("click", function () {
     currentLanguage = currentLanguage === "fa" ? "en" : "fa";
