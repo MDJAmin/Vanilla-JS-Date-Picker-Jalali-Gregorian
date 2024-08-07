@@ -19,6 +19,7 @@ body {
 #datepicker:focus {
   scale: 1.1;
 }
+
 .calendar-container {
   display: none;
   position: absolute;
@@ -39,10 +40,13 @@ body {
   background-color: #f0f0f0;
   padding: 10px;
   display: flex;
+  text-align: center;
   align-items: center;
   justify-content: space-between;
 }
-
+#next-calendar-title {
+  margin: auto;
+}
 #prev-month,
 #next-month {
   background-color: #ddd;
@@ -55,13 +59,14 @@ body {
 
 #prev-month:hover,
 #next-month:hover,
-.toggle-calendar-btn:hover {
+#change-calender-date:hover {
   background-color: #000000;
   color: white;
 }
 
 #prev-month:focus,
-#next-month:focus {
+#next-month:focus,
+#change-calender-date:focus {
   background-color: #000000;
   color: white;
   scale: 1.1;
@@ -97,19 +102,17 @@ body {
   left: 4px;
   padding: 10px 0px;
 }
-
-select option{
-  font-size: 1.2em;
-}
-
-.toggle-calendar-btn{
+#change-calender-date {
   position: absolute;
-  bottom: 10px;
-  right: 4px;
+  bottom: 14px;
+  right: 25px;
   background-color: #ddd;
   border: none;
   padding: 10px 30px;
   cursor: pointer;
   transition: all 0.5s;
   border-radius: 7px;
+}
+select option {
+  font-size: 1.4em;
 }
