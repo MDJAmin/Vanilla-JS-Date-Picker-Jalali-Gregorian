@@ -75,6 +75,9 @@ document.addEventListener("DOMContentLoaded", function () {
           jalaaliDate.jm
         );
   
+        const today = new Date();
+        const todayJalaali = jalaali.toJalaali(today.getFullYear(), today.getMonth() + 1, today.getDate());
+  
         if (currentLanguage === "fa") {
           calendarTitle.textContent = `${jalaaliDate.jy} ${
             jalaaliMonths[jalaaliDate.jm - 1]
@@ -84,9 +87,6 @@ document.addEventListener("DOMContentLoaded", function () {
             gregorianMonths[currentDate.getMonth()]
           }`;
         }
-  
-        const today = new Date();
-        const todayJalaali = jalaali.toJalaali(today.getFullYear(), today.getMonth() + 1, today.getDate());
   
         calendar.querySelector(".calendar-body").innerHTML = `
           ${daysOfWeek.map((day) => `<div>${day}</div>`).join("")}
@@ -142,7 +142,13 @@ document.addEventListener("DOMContentLoaded", function () {
             ${daysOfWeek.map((day) => `<div>${day}</div>`).join("")}
             ${Array.from(
               { length: nextJalaaliMonthDays },
-              (_, i) => `<div class="day">${i + 1}</div>`
+              (_, i) => {
+                const dayNumber = i + 1;
+                const isToday = (nextJalaaliDate.jy === todayJalaali.jy &&
+                                 nextJalaaliDate.jm === todayJalaali.jm &&
+                                 dayNumber === todayJalaali.jd);
+                return `<div class="day${isToday ? ' current-day' : ''}">${dayNumber}</div>`;
+              }
             ).join("")}
           `;
   
