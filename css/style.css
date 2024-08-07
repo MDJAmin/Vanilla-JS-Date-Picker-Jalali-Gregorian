@@ -120,6 +120,12 @@ select option {
 
 .current-day {
   background-color: #222121;
-  color: #ffffff; 
-  transform: scale(0.9); 
+  color: #ffffff;
+  transform: scale(0.9);
+}
+
+.en .current-day {
+  background-color: #1a2f8f;
+  color: #ffffff;
+  transform: scale(0.9);
 }
