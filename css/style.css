@@ -117,3 +117,9 @@ body {
 select option {
   font-size: 1.4em;
 }
+
+.current-day {
+  background-color: #222121;
+  color: #ffffff; 
+  transform: scale(0.9); 
+}
