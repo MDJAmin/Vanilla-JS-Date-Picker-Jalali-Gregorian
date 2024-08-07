@@ -23,7 +23,7 @@ body {
 .calendar-container {
   display: none;
   position: absolute;
-  left: 35%;
+  left: 40%;
   background-color: white;
   border: 1px solid #ddd;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -32,6 +32,7 @@ body {
 
 .calendar {
   width: 500px;
+  min-height: 400px;
   text-align: center;
 }
 
@@ -99,13 +100,13 @@ body {
 #month-select {
   position: absolute;
   bottom: 10px;
-  left: 4px;
+  left: 10px;
   padding: 10px 0px;
 }
 #change-calender-date {
   position: absolute;
-  bottom: 14px;
-  right: 25px;
+  bottom: 10px;
+  right: 10px;
   background-color: #ddd;
   border: none;
   padding: 10px 30px;
