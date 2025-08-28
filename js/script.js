@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
       showCurrentAndNextMonth: "نمایش ماه فعلی و ماه آینده",
     },
     en: {
-      changeMonth: "Change lng",
+      changeMonth: "Change Language",
       prevMonth: "Previous",
       nextMonth: "Next",
       showCurrentMonth: "Show Current Month",
@@ -99,19 +99,12 @@ document.addEventListener("DOMContentLoaded", function () {
         currentDate.getMonth() + 1,
         1
       );
-      const gregorianDate = new Date(
-        currentDate.getFullYear(),
-        currentDate.getMonth(),
-        1
-      );
+      const gregorianDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
       const daysOfWeek =
         currentLanguage === "fa"
           ? ["ش", "ی", "د", "س", "چ", "پ", "ج"]
           : ["S", "M", "T", "W", "T", "F", "S"];
-      const jalaaliMonthDays = jalaali.jalaaliMonthLength(
-        jalaaliDate.jy,
-        jalaaliDate.jm
-      );
+      const jalaaliMonthDays = jalaali.jalaaliMonthLength(jalaaliDate.jy, jalaaliDate.jm);
 
       const today = new Date();
       const todayJalaali = jalaali.toJalaali(
@@ -119,11 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
         today.getMonth() + 1,
         today.getDate()
       );
-      const todayGregorian = new Date(
-        today.getFullYear(),
-        today.getMonth(),
-        today.getDate()
-      );
+      const todayGregorian = new Date(today.getFullYear(), today.getMonth(), today.getDate());
 
       if (currentLanguage === "fa") {
         calendarTitle.textContent = `${jalaaliDate.jy} ${
@@ -147,9 +136,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     jalaaliDate.jy === todayJalaali.jy &&
                     jalaaliDate.jm === todayJalaali.jm &&
                     dayNumber === todayJalaali.jd;
-                  return `<div class="day${
-                    isToday ? " current-day" : ""
-                  }">${dayNumber}</div>`;
+                  return `<div class="day${isToday ? " current-day" : ""}">${dayNumber}</div>`;
                 }).join("")}
             `;
 
@@ -162,11 +149,9 @@ document.addEventListener("DOMContentLoaded", function () {
               dayElement.textContent
             })`;
           } else {
-            datepicker.value = `${currentDate.getFullYear()}/${
-              currentDate.getMonth() + 1
-            }/${dayElement.textContent} (${todayJalaali.jy}/${
-              todayJalaali.jm
-            }/${dayElement.textContent})`;
+            datepicker.value = `${currentDate.getFullYear()}/${currentDate.getMonth() + 1}/${
+              dayElement.textContent
+            } (${todayJalaali.jy}/${todayJalaali.jm}/${dayElement.textContent})`;
           }
           calendarContainer.style.display = "none";
         });
@@ -188,15 +173,14 @@ document.addEventListener("DOMContentLoaded", function () {
         if (currentLanguage === "fa") {
           nextCalendarTitle.textContent = `${nextJalaaliDate.jy} ${
             jalaaliMonths[nextJalaaliDate.jm - 1]
-          } (${new Date(
-            nextDate.getFullYear(),
-            nextDate.getMonth(),
-            1
-          ).toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })})`;
+          } (${new Date(nextDate.getFullYear(), nextDate.getMonth(), 1).toLocaleDateString(
+            "en-US",
+            {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            }
+          )})`;
         } else {
           nextCalendarTitle.textContent = `${nextDate.getFullYear()} ${
             gregorianMonths[nextDate.getMonth()]
@@ -242,10 +226,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document.addEventListener("click", function (event) {
-    if (
-      !calendarContainer.contains(event.target) &&
-      !datepicker.contains(event.target)
-    ) {
+    if (!calendarContainer.contains(event.target) && !datepicker.contains(event.target)) {
       calendarContainer.style.display = "none";
     }
   });
